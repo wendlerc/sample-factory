@@ -85,7 +85,10 @@ def init_multiplayer_env(make_env_func, player_id, env_config, init_info=None):
 
     env.unwrapped.init_info = init_info
 
-    env.seed(env.unwrapped.worker_index * 1000 + env.unwrapped.vector_index * 10 + player_id)
+    try:
+        env.seed(env.unwrapped.worker_index * 1000 + env.unwrapped.vector_index * 10 + player_id)
+    except AttributeError:
+        pass  # seed() removed in newer gymnasium; seed passed via reset()
     return env
 
 

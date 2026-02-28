@@ -66,6 +66,9 @@ class TensorDict(dict):
                 else:
                     raise ValueError(f"Type {type(new_data)} not supported in set_data_func")
 
+                # numpy 2.x no longer auto-squeezes (1,) arrays to scalar
+                if n.ndim > 0 and n.size == 1 and np.ndim(x[index]) == 0:
+                    n = n.item()
                 x[index] = n
 
 
