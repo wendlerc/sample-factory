@@ -144,3 +144,7 @@ wandb/
 
 cmake-build*
 sf_examples/vizdoom/doom/multiplayer/tests/_vizdoom/
+
+# Doom Arena
+sf_train_dir/
+results/
